@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicação Recebida - Bruno Bettini</title>
+
+    <!-- Pré-conexão para fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fontes: DM Serif Display (Heading) + DM Sans (Body) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Serif+Display:ital@0;1&display=swap"
+        rel="stylesheet">
+
+    <!-- Estilos (Reaproveitando o CSS principal) -->
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+        .thank-you-view {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #111315;
+            /* Fundo Dark como a seção final */
+            color: #FFFFFF;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thank-you-container {
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .thank-you-badge {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            border-radius: 100px;
+            background: rgba(224, 90, 0, 0.1);
+            color: var(--color-accent, #E05A00);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(224, 90, 0, 0.2);
+        }
+
+        .thank-you-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .thank-you-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2.5rem;
+        }
+
+        .thank-you-disclaimer {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-style: italic;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+        }
+
+        .cta-glow-thank-you {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle at center, rgba(224, 90, 0, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Reutilizando animação de pulso se necessário ou apenas fade in */
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Noise Overlay -->
+    <div class="noise-overlay" style="opacity: 0.05;"></div>
+
+    <main class="thank-you-view">
+        <div class="cta-glow-thank-you"></div>
+
+        <div class="thank-you-container fade-in">
+            <div class="thank-you-badge">Aplicação Recebida</div>
+
+            <h1 class="thank-you-title">Obrigado por seu interesse.</h1>
+
+            <p class="thank-you-text">
+                Nossa equipe de curadoria analisará seu perfil e suas respostas. Se houver alinhamento com o padrão de
+                profissionais que buscamos para nosso grupo de desenvolvimento, entraremos em contato diretamente pelo
+                WhatsApp em até 48 horas para agendar uma entrevista de alinhamento.
+            </p>
+
+            <p class="thank-you-disclaimer">
+                Importante: Apenas os perfis selecionados serão contatados.
+            </p>
+        </div>
+    </main>
+
+    <script>
+        // Pequeno script para o ano no footer se existir
+        document.addEventListener('DOMContentLoaded', () => {
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+
+</html>
