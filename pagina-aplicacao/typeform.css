@@ -1,0 +1,358 @@
+/* ==========================================
+   TYPEFORM COMPONENT
+   Formulario conversacional estilo TypeForm
+   Sem custos — puro HTML/CSS/JS
+   ========================================== */
+
+/* Container principal — ocupa a viewport inteira */
+.typeform {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+/* ==========================================
+   PROGRESS BAR
+   ========================================== */
+
+.typeform-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--color-border);
+  z-index: 200;
+}
+
+.typeform-progress-bar {
+  height: 100%;
+  background: var(--color-primary);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: width;
+}
+
+/* ==========================================
+   STEPS
+   ========================================== */
+
+.typeform-step {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem var(--container-px);
+  max-width: 720px;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(3rem);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.4s ease;
+}
+
+/* Step entrando de baixo (avancar) */
+.typeform-step.enter-next {
+  transform: translateX(-50%) translateY(3rem);
+  opacity: 0;
+}
+
+/* Step entrando de cima (voltar) */
+.typeform-step.enter-prev {
+  transform: translateX(-50%) translateY(-3rem);
+  opacity: 0;
+}
+
+/* Step ativo */
+.typeform-step.active {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Step saindo para cima (avancar) */
+.typeform-step.exit-up {
+  transform: translateX(-50%) translateY(-3rem);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Step saindo para baixo (voltar) */
+.typeform-step.exit-down {
+  transform: translateX(-50%) translateY(3rem);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ==========================================
+   CONTADOR
+   ========================================== */
+
+.typeform-counter {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  user-select: none;
+}
+
+.typeform-counter svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+}
+
+/* ==========================================
+   PERGUNTA
+   ========================================== */
+
+.typeform-question {
+  margin-bottom: 2rem;
+}
+
+.typeform-question h2 {
+  font-size: clamp(1.375rem, 4vw, 2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+.typeform-question p {
+  margin-top: 0.625rem;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+/* ==========================================
+   INPUT DE TEXTO
+   ========================================== */
+
+.typeform-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.typeform-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--color-border);
+  padding: 0.625rem 0;
+  font-size: clamp(1.125rem, 3vw, 1.375rem);
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 0.2s;
+  border-radius: 0;
+}
+
+.typeform-input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.45;
+}
+
+.typeform-input:focus {
+  border-bottom-color: var(--color-primary);
+}
+
+.typeform-input.error {
+  border-bottom-color: var(--color-error);
+}
+
+/* ==========================================
+   ACOES (botao + hint)
+   ========================================== */
+
+.typeform-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+}
+
+.typeform-btn-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.6875rem 1.375rem;
+  border-radius: 0.375rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.typeform-btn-next:hover {
+  background: var(--color-primary-hover);
+}
+
+.typeform-btn-next:active {
+  transform: scale(0.97);
+}
+
+.typeform-hint {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  line-height: 1;
+}
+
+.typeform-hint strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* ==========================================
+   MENSAGEM DE ERRO
+   ========================================== */
+
+.typeform-error {
+  font-size: 0.875rem;
+  color: var(--color-error);
+  display: none;
+}
+
+.typeform-error.visible {
+  display: block;
+}
+
+/* ==========================================
+   CHOICES (multipla escolha)
+   ========================================== */
+
+.typeform-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.typeform-choice {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.8125rem 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: var(--color-text);
+  text-align: left;
+  background: var(--color-bg);
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    transform 0.1s;
+  cursor: pointer;
+}
+
+.typeform-choice:hover {
+  border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 5%, transparent);
+}
+
+.typeform-choice.selected {
+  border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+}
+
+.typeform-choice:active {
+  transform: scale(0.99);
+}
+
+.typeform-choice-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.625rem;
+  height: 1.625rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  flex-shrink: 0;
+  transition: border-color 0.15s, color 0.15s;
+  user-select: none;
+}
+
+.typeform-choice.selected .typeform-choice-key {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* ==========================================
+   NAVEGACAO (setas prev/next fixas)
+   ========================================== */
+
+.typeform-nav {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  display: flex;
+  gap: 0.375rem;
+  z-index: 200;
+}
+
+.typeform-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  border-radius: 0.375rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: background 0.15s, border-color 0.15s;
+  cursor: pointer;
+}
+
+.typeform-nav-btn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-text) 6%, transparent);
+}
+
+.typeform-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   TELA FINAL / OBRIGADO
+   ========================================== */
+
+.typeform-end-screen {
+  text-align: center;
+}
+
+.typeform-end-screen h2 {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  margin-bottom: 0.75rem;
+}
+
+.typeform-end-screen p {
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+  max-width: 480px;
+  margin: 0 auto 2rem;
+}
+
+/* ==========================================
+   ACESSIBILIDADE
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .typeform-step,
+  .typeform-progress-bar,
+  .typeform-btn-next,
+  .typeform-choice {
+    transition: none !important;
+  }
+}

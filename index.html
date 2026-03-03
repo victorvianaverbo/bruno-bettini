@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO: Atualizar em /gerar-copy -->
+  <title>Titulo da Pagina</title>
+  <meta name="description" content="Descricao para SEO">
+
+  <!-- Open Graph: Atualizar em /gerar-copy -->
+  <meta property="og:title" content="Titulo da Pagina">
+  <meta property="og:description" content="Descricao para SEO">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="">
+  <meta property="og:url" content="">
+
+  <!-- Favicon: Adicionar em /desenvolver -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- FONTS: Substituir em /gerar-design (NUNCA usar fontes overused) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Preconnect CDNs de bibliotecas -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- intl-tel-input -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/css/intlTelInput.css">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Scripts: defer no head = browser descobre cedo, executa apos DOM parse -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/intlTelInput.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!--
+    ESTRUTURA DA PAGINA
+    ===================
+    Gerada por /gerar-layout e construida por /desenvolver
+
+    REGRAS:
+    - Cada secao deve ter arquetipo + constraints unicos
+    - NUNCA repetir padroes entre secoes consecutivas
+    - NUNCA usar: hero centralizado generico, 3 cards, grid simetrico
+    - Manter font pairing consistente em toda pagina
+  -->
+
+  <main>
+    <!-- Conteudo gerado por /desenvolver -->
+  </main>
+
+  <!-- ==========================================
+    TYPEFORM (template de formulario conversacional)
+    Para usar:
+      1. Adicione no <head>:
+            <link rel="stylesheet" href="typeform.css">
+      2. Adicione antes de </body>:
+            <script src="typeform.js" defer></script>
+      3. Cole o bloco abaixo no lugar desejado.
+
+    Tipos de step disponiveis:
+      - Texto simples:  <input type="text" ...>
+      - E-mail:         <input type="email" ...>
+      - Numero:         <input type="number" ...>
+      - Escolha unica:  [data-tf-choice] sem [data-multiple]  → auto-avanca
+      - Escolha multipla: [data-multiple] no data-step        → botao OK
+
+    Atributos do data-step:
+      data-step="N"        → numero do step (qualquer valor unico)
+      data-name="chave"    → chave usada para salvar a resposta de choices
+      data-required        → exige ao menos uma choice selecionada
+      data-multiple        → permite selecionar mais de uma choice
+
+    Submissao:
+      - Sem form Netlify:  mostra [data-tf-end] ao terminar
+      - Com form Netlify:  envia os dados e redireciona (data-redirect) ou mostra [data-tf-end]
+  -->
+  <!--
+  <div class="typeform" data-typeform>
+
+    <!- - Progress bar - ->
+    <div class="typeform-progress" aria-hidden="true">
+      <div class="typeform-progress-bar" style="width:0%"></div>
+    </div>
+
+    <!- - STEP 1: Texto - ->
+    <div class="typeform-step" data-step="1">
+      <div class="typeform-question">
+        <span class="typeform-counter" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="4.5"/></svg>
+          1
+        </span>
+        <h2>Qual é o seu nome?</h2>
+        <p>Como prefere ser chamado(a)?</p>
+      </div>
+      <div class="typeform-input-wrapper">
+        <input type="text" name="nome" class="typeform-input" placeholder="Digite sua resposta..." required autocomplete="name">
+        <span class="typeform-error" role="alert"></span>
+        <div class="typeform-actions">
+          <button type="button" class="typeform-btn-next" data-tf-btn-next>OK ✓</button>
+          <span class="typeform-hint"><strong>Enter ↵</strong> para continuar</span>
+        </div>
+      </div>
+    </div>
+
+    <!- - STEP 2: E-mail - ->
+    <div class="typeform-step" data-step="2">
+      <div class="typeform-question">
+        <span class="typeform-counter" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="4.5"/></svg>
+          2
+        </span>
+        <h2>Qual é o seu e-mail?</h2>
+      </div>
+      <div class="typeform-input-wrapper">
+        <input type="email" name="email" class="typeform-input" placeholder="nome@empresa.com" required autocomplete="email">
+        <span class="typeform-error" role="alert"></span>
+        <div class="typeform-actions">
+          <button type="button" class="typeform-btn-next" data-tf-btn-next>OK ✓</button>
+          <span class="typeform-hint"><strong>Enter ↵</strong> para continuar</span>
+        </div>
+      </div>
+    </div>
+
+    <!- - STEP 3: Escolha unica (auto-avanca) - ->
+    <div class="typeform-step" data-step="3" data-name="desafio" data-required>
+      <div class="typeform-question">
+        <span class="typeform-counter" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="4.5"/></svg>
+          3
+        </span>
+        <h2>Qual é o seu maior desafio hoje?</h2>
+      </div>
+      <div class="typeform-choices">
+        <button type="button" class="typeform-choice" data-tf-choice data-value="atrair-clientes">
+          <span class="typeform-choice-key" aria-hidden="true">A</span>
+          Atrair mais clientes
+        </button>
+        <button type="button" class="typeform-choice" data-tf-choice data-value="fechar-vendas">
+          <span class="typeform-choice-key" aria-hidden="true">B</span>
+          Fechar mais vendas
+        </button>
+        <button type="button" class="typeform-choice" data-tf-choice data-value="reter-clientes">
+          <span class="typeform-choice-key" aria-hidden="true">C</span>
+          Reter clientes
+        </button>
+        <button type="button" class="typeform-choice" data-tf-choice data-value="outro">
+          <span class="typeform-choice-key" aria-hidden="true">D</span>
+          Outro
+        </button>
+      </div>
+      <span class="typeform-error" role="alert"></span>
+    </div>
+
+    <!- - Tela de obrigado - ->
+    <div class="typeform-step typeform-end-screen" data-tf-end>
+      <h2>Obrigado!</h2>
+      <p>Recebemos suas informações e entraremos em contato em breve.</p>
+    </div>
+
+    <!- - Tela de erro - ->
+    <div class="typeform-step typeform-end-screen" data-tf-error>
+      <h2>Algo deu errado</h2>
+      <p>Tente novamente mais tarde ou entre em contato diretamente.</p>
+    </div>
+
+    <!- - Form oculto para Netlify (data-redirect="/obrigado.html" opcional) - ->
+    <form
+      name="typeform-lead"
+      method="POST"
+      action="/obrigado.html"
+      data-tf-form
+      hidden
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+    >
+      <input type="hidden" name="form-name" value="typeform-lead">
+      <p hidden><label>Não preencha: <input name="bot-field"></label></p>
+    </form>
+
+    <!- - Setas de navegacao (prev / next) - ->
+    <nav class="typeform-nav" aria-label="Navegação do formulário">
+      <button class="typeform-nav-btn" data-tf-prev aria-label="Voltar" disabled>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+        </svg>
+      </button>
+      <button class="typeform-nav-btn" data-tf-next aria-label="Avançar">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+        </svg>
+      </button>
+    </nav>
+
+  </div>
+  -->
+
+  <!-- FORMULARIO (template) -->
+  <!--
+  <section id="contato" class="section">
+    <div class="container">
+      <h2>Titulo</h2>
+
+      <form name="contato" method="POST" action="/obrigado.html" data-netlify="true" netlify-honeypot="bot-field" data-form>
+        <input type="hidden" name="form-name" value="contato">
+        <p hidden><label>Nao preencha: <input name="bot-field"></label></p>
+
+        <div class="form-group">
+          <label class="form-label" for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" class="form-input" required autocomplete="name">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">E-mail</label>
+          <input type="email" id="email" name="email" class="form-input" required autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="telefone">WhatsApp</label>
+          <input type="tel" id="telefone" name="telefone" class="form-input" required autocomplete="tel">
+        </div>
+
+        <div class="form-feedback"></div>
+        <button type="submit" class="btn">Enviar</button>
+      </form>
+    </div>
+  </section>
+  -->
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Nome. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

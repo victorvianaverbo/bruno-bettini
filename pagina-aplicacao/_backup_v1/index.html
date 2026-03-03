@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentoria de Palestrantes - Alto Valor</title>
+    
+    <!-- Pré-conexão para fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fontes: DM Serif Display (Heading) + DM Sans (Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation / Header -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="logo">BRUNO<span>BETTINI</span></div>
+        </div>
+    </header>
+
+    <!-- Hero Section: Spotlight Archetype -->
+    <section class="hero" id="hero">
+        <div class="hero-spotlight"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="badge">Mentoria Exclusiva</div>
+                <h1 class="hero-headline">
+                    Transforme Sua Expertise<br>
+                    em uma Carreira de<br>
+                    <span class="highlight">Palestrante de Alto Valor</span>
+                </h1>
+                <p class="hero-subheadline">
+                    Descubra o método usado pelos palestrantes mais bem pagos do mercado e aprenda a transformar seu conhecimento em um negócio lucrativo e de alto impacto.
+                </p>
+                <div class="hero-actions">
+                    <a href="#aplicacao" class="btn-primary">
+                        APLICAR PARA A SELEÇÃO
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="btn-icon">
+                            <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O Problema Section -->
+    <section class="section-problem" id="problema">
+        <div class="container problem-container">
+            <div class="problem-grid">
+                <div class="problem-header">
+                    <h2 class="section-title">Você passou anos construindo uma carreira sólida...</h2>
+                    <p class="section-lead">
+                        tornando-se um especialista em sua área e entregando resultados de alto nível. Mas, quando pensa em compartilhar todo esse conhecimento no palco, <span class="highlight-text">você sente que falta um método?</span>
+                    </p>
+                </div>
+                
+                <div class="problem-content">
+                    <p class="problem-context">
+                        Muitos dos maiores especialistas do mercado, talvez assim como você, têm um potencial gigante, mas travam na hora de transformar essa experiência em uma carreira de palestrante por três motivos centrais:
+                    </p>
+
+                    <div class="problem-cards">
+                        <div class="problem-card">
+                            <div class="card-number">01</div>
+                            <h3 class="card-title">Posicionamento Vago</h3>
+                            <p class="card-text">Não sabem como se vender como uma autoridade de mercado, alguém que as empresas pagariam caro para ouvir.</p>
+                        </div>
+                        
+                        <div class="problem-card">
+                            <div class="card-number">02</div>
+                            <h3 class="card-title">Produto Inexistente</h3>
+                            <p class="card-text">Não possuem uma palestra estruturada como um produto comercial, capaz de gerar impacto real e o desejo de recontratação.</p>
+                        </div>
+                        
+                        <div class="problem-card">
+                            <div class="card-number">03</div>
+                            <h3 class="card-title">Insegurança Comercial</h3>
+                            <p class="card-text">Sentem um bloqueio na hora de precificar o próprio trabalho, negociar contratos ou prospectar empresas de forma ativa.</p>
+                        </div>
+                    </div>
+
+                    <div class="problem-conclusion">
+                        <p>O resultado? Você continua esperando por convites que raramente chegam ou, pior, aceita oportunidades que <strong class="highlight-text">não valorizam o seu verdadeiro potencial</strong> e o conhecimento que você acumulou.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Efeito sutil de Spotlight seguindo o mouse no Hero
+        const heroSection = document.querySelector('.hero');
+        const spotlightDiv = document.querySelector('.hero-spotlight');
+
+        if(heroSection && spotlightDiv) {
+            heroSection.addEventListener('mousemove', (e) => {
+                const rect = heroSection.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                spotlightDiv.style.background = `radial-gradient(circle 600px at ${x}px ${y}px, rgba(224, 90, 0, 0.08), transparent 80%)`;
+            });
+            
+            heroSection.addEventListener('mouseleave', () => {
+                spotlightDiv.style.background = `radial-gradient(circle 800px at 50% 0%, rgba(224, 90, 0, 0.05), transparent 70%)`;
+            });
+        }
+    </script>
+</body>
+</html>
