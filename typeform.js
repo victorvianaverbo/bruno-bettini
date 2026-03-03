@@ -25,8 +25,10 @@ class Typeform {
   }
 
   _init() {
-    // Mostra o primeiro step
-    this._showStep(0, 'next');
+    // Mostra o primeiro step diretamente (sem _showStep para evitar early return)
+    if (this.steps[0]) {
+      this.steps[0].classList.add('active');
+    }
     this._updateProgress();
 
     // Botoes "OK" dentro dos steps
@@ -275,7 +277,7 @@ class Typeform {
 
     // Envia via Netlify Forms
     try {
-      const res = await fetch(form.getAttribute('action') || '/', {
+      const res = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(new FormData(form)).toString()

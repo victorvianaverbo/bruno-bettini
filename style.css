@@ -493,6 +493,37 @@ body {
     }
 }
 
+/* CTA FINAL */
+.section-cta-final {
+    padding: var(--space-xl) 0;
+    background-color: #111315;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-final-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.cta-final-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: #FFFFFF;
+    line-height: 1.15;
+    font-weight: 400;
+}
+
+.cta-final-text {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 600px;
+    line-height: 1.7;
+}
+
 /* MODAL TYPEFORM */
 .typeform-modal {
     position: fixed;
@@ -509,6 +540,11 @@ body {
 .typeform-modal.is-open {
     opacity: 1;
     pointer-events: all;
+}
+
+/* Impede que steps com pointer-events:all interceptem cliques quando o modal esta fechado */
+.typeform-modal:not(.is-open) .typeform-step {
+    pointer-events: none !important;
 }
 
 .typeform-modal-overlay {
@@ -549,17 +585,43 @@ body {
     height: auto;
 }
 
-.typeform-step {
+.typeform-modal .typeform-step {
     padding: 0;
     left: 0;
+    top: 0;
+    bottom: 0;
     transform: translateY(3rem);
     max-width: 100%;
     position: absolute;
     width: 100%;
 }
 
-.typeform-step.active {
+.typeform-modal .typeform-step.active {
     transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+.typeform-modal .typeform-step.exit-up {
+    transform: translateY(-3rem);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.typeform-modal .typeform-step.exit-down {
+    transform: translateY(3rem);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.typeform-modal .typeform-step.enter-next {
+    transform: translateY(3rem);
+    opacity: 0;
+}
+
+.typeform-modal .typeform-step.enter-prev {
+    transform: translateY(-3rem);
+    opacity: 0;
 }
 
 .typeform-question h2 {
